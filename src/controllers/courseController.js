@@ -1,16 +1,44 @@
 const courseService = require("../services/courseService");
 const logger = require('../commons/logger');
+const axios = require('axios');
+
+
+const getJSON = () => {
+    return new Promise( function(resolve) {
+        axios.get('https://tutorialzine.com/misc/files/example.json')
+            .then( function(json) {
+                console.log("---------------Response-------------");
+                console.log(json.data);
+            }).catch((err) => { 
+                console.log(err) 
+            });
+    });
+}
+
+const getJSONAsync = async () => {
+
+    const url = "https://tutorialzine.com/misc/files/example.json";
+
+    await axios.get(url).then(function(response) {
+        console.log("---------------Response-------------");
+        console.log(response.data);
+    })
+    .catch(function(error) {
+        console.log(error)
+    });
+}
+
 
 const getAllCourse = (req, res) => {
     courseService.getAllCourse().then((allCourse) => {
 
         // Log error
-        logger.error("Hello, Winston!");
-        logger.log("error", "Hello, Winston!");
+        // logger.error("Hello, Winston!");
+        // logger.log("error", "Hello, Winston!");
 
         // Log debug
-        logger.log("debug", "Hello, Winston!");
-        logger.debug("The is the home '/' route.");
+        // logger.log("debug", "Hello, Winston!");
+        // logger.debug("The is the home '/' route.");
 
         return res.status(200).json({
             success: true,
@@ -91,6 +119,8 @@ module.exports = {
     getDetailCourse,
     createCourse,
     updateCourse,
-    deleteCourse
+    deleteCourse,
+    getJSON,
+    getJSONAsync
 };
   

@@ -15,6 +15,10 @@ router.get('/', function (req, res) {
     res.send('Wiki home page');
 });
 
+// demo promise
+router.get('/getJSON', Course.getJSON);
+router.get('/getJSONAsync', Course.getJSONAsync);
+
 router.post('/courses', validate(addCause), Course.createCourse);
 router.get('/courses', Course.getAllCourse);
 router.get('/courses/:courseId', Course.getDetailCourse);
@@ -28,5 +32,7 @@ router.post('/auth/login', [ userValidation.LOGIN ], userController.login)
 router.use([ authMiddleware.isAuth ])
 
 router.get('/users', userController.getUser )
+
+
 
 module.exports = router;
