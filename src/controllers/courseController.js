@@ -33,12 +33,12 @@ const getAllCourse = (req, res) => {
     courseService.getAllCourse().then((allCourse) => {
 
         // Log error
-        // logger.error("Hello, Winston!");
-        // logger.log("error", "Hello, Winston!");
+        logger.error("Hello, Winston!");
+        logger.log("error", "Hello, Winston!");
 
         // Log debug
-        // logger.log("debug", "Hello, Winston!");
-        // logger.debug("The is the home '/' route.");
+        logger.log("debug", "Hello, Winston!");
+        logger.debug("The is the home '/' route.");
 
         return res.status(200).json({
             success: true,
