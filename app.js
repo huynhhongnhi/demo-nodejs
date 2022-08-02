@@ -6,19 +6,12 @@ const path = require('path');
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, 'static')));
-console.log('---------------------')
-console.log(express.static(path.join(__dirname, '/views/login/static')))
-console.log(path.join(__dirname, '/views/login/static'))
 
 // set up port number
-const port = 5036;
+const port = 5035;
 
 // set up route api
 app.use('/api/', require('./src/routes/api'));
-
-// set up route
-app.use('/', require('./src/routes/web'));
 
 
 // listen
