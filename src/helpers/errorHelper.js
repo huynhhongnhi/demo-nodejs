@@ -1,6 +1,6 @@
 module.exports.apiResponseErrorResource = function( req, res ){
     let response = {}
-    if(req.errors){
+    if (req.errors) {
         let errors = Object.keys(req.errors).map( objKey => {
             let error = req.errors[objKey];
             return { error: objKey, ...error }

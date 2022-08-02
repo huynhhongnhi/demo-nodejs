@@ -1,6 +1,7 @@
 // import dependencies
 const express = require('express');
 const path = require('path');
+require('dotenv').config();
 
 // set up dependencies    
 const app = express();

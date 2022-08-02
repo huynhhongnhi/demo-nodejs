@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const Course = require('../controllers/courseController');
+const courseController = require('../controllers/courseController');
 const userController = require("../controllers/userController")
 
 const { validate } = require('../validations/validation'); 
@@ -16,23 +16,19 @@ router.get('/', function (req, res) {
 });
 
 // demo promise
-router.get('/getJSON', Course.getJSON);
-router.get('/getJSONAsync', Course.getJSONAsync);
+router.get('/getJSON', courseController.getJSON);
+router.get('/getJSONAsync', courseController.getJSONAsync);
 
-router.post('/courses', validate(addCause), Course.createCourse);
-router.get('/courses', Course.getAllCourse);
-router.get('/courses/:courseId', Course.getDetailCourse);
-router.get('/courses/:courseId', Course.getDetailCourse);
-router.patch('/courses/:courseId', Course.updateCourse);
-router.delete('/courses/:courseId', Course.deleteCourse);
+router.post('/courses', validate(addCause), courseController.createCourse);
+router.get('/courses', courseController.getAllCourse);
+router.get('/courses/:courseId', courseController.getDetailCourse);
+router.get('/courses/:courseId', courseController.getDetailCourse);
+router.patch('/courses/:courseId', courseController.updateCourse);
+router.delete('/courses/:courseId', courseController.deleteCourse);
 
 router.post('/auth/register', [ userValidation.REGISTER ], userController.register)
 router.post('/auth/login', [ userValidation.LOGIN ], userController.login)
-
 router.use([ authMiddleware.isAuth ])
-
 router.get('/users', userController.getUser )
-
-
 
 module.exports = router;

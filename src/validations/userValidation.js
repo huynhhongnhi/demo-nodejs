@@ -1,8 +1,8 @@
 const nodeValidator = require('node-input-validator'),
       errorHelper    = require('../helpers/errorHelper'),
       { Validator }  = nodeValidator
-
-let REGISTER = async function( req, res, next ) {
+      
+const REGISTER = async function( req, res, next ) {
     let validate = new Validator(req.body, {
         username: "required|string|minLength:1|maxLength:10000",
         email   : "required|email|minLength:3|maxLength:500",
@@ -19,7 +19,7 @@ let REGISTER = async function( req, res, next ) {
     next()
 }
 
-let LOGIN = async function( req, res, next ){
+const LOGIN = async function( req, res, next ){
 
     let validate = new Validator(req.body, {
         email   : "required|email|minLength:3|maxLength:500",
